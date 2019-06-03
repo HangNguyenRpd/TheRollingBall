@@ -5,6 +5,7 @@ uniform mat4 M;
 in mat4 ModelView;
 in vec3 pos;
 uniform vec3 light_position[2];
+uniform vec4 ColourMap;
 smooth in vec3 outVert;
 smooth in vec3 outNormal;
 smooth in vec2 outUV;
@@ -26,8 +27,8 @@ struct DirectionalLight
 };
 
 
-uniform DirectionalLight top_light = {vec4(0.2), vec3(0.0, 4.5, 0.0) , 2.0, vec4(0.96f, 0.96f, 0.95f, 0.8f)};
-uniform DirectionalLight key_light = {vec4(0.1), vec3(-2.0, -1.3, 6.0) , 1.5, vec4(1.0f)};
+uniform DirectionalLight top_light = {vec4(0.2), vec3(2.0, 4.5, 2.0) , 2.0, vec4(0.96f, 0.96f, 0.95f, 0.8f)};
+uniform DirectionalLight key_light = {vec4(0.1), vec3(-6.0, -1.3, -2.0) , 1.5, vec4(1.0f)};
 
 
 vec2 poissonDisk[4] = vec2[](
@@ -88,9 +89,9 @@ vec4 ToonShade(in DirectionalLight light)
     L = normalize(light.position-pos);
     H = normalize(L+E);
 
-    float Ks = pow(max(dot(L,N), 0.0), Shininess); //cal specular highlight
 
-    return light.ambient +diffuse +Ks;
+
+    return light.ambient +diffuse;
 }
 
 
@@ -100,11 +101,9 @@ void main()
 {
 
     vec3 pos = outVert;
-    vec4 ColourMap;
 
     mat4 MVNormal = transpose(inverse(ModelView));
     N = normalize(vec3(MVNormal) * outNormal);
-    ColourMap = vec4(0.8,0.8,0.5,1.0f);
 
     vec4 tone = ToonShade(top_light) + ToonShade(key_light) ;
     vec4 Toon_tone = toneMap(tone);

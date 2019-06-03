@@ -1,4 +1,0 @@
-#include "GameScene.h"
-
-
-GameScene::timerEvent()

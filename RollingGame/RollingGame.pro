@@ -1,7 +1,7 @@
 TEMPLATE = app
-CONFIG -= console c++11
+CONFIG += console c++11
 CONFIG -= app_bundle
-CONFIG +=windows
+#CONFIG +=windows
 QT+=gui opengl core
 TARGET=RollingGame
 DESTDIR=./
@@ -11,12 +11,14 @@ SOURCES +=  src/main.cpp \
             src/Mainwindow.cpp \
             src/GameScene.cpp \
             src/SceneSlotSignal.cpp \
-            src/SceneMouseControl.cpp
+            src/SceneMouseControl.cpp \
+    src/Path.cpp
 
 FORMS +=    ui/Mainwindow.ui \
 
 HEADERS +=  include/Mainwindow.h \
             include/GameScene.h \
+    include/Path.h
 
 OTHER_FILES+= README.md \
               shaders/ToonFrag.glsl \

@@ -15,6 +15,7 @@ uniform mat4 lightMatrix;
 out mat4 ModelView;
 out vec3 pos;
 uniform vec3 light_position[2];
+uniform vec4 ColourMap;
 smooth out vec3 outVert;
 smooth out vec3 outNormal;
 smooth out vec2 outUV;

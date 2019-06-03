@@ -2,6 +2,9 @@
 <ui version="4.0">
  <class>MainWindow</class>
  <widget class="QMainWindow" name="MainWindow">
+  <property name="enabled">
+   <bool>true</bool>
+  </property>
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -14,9 +17,18 @@
    <string>Radio</string>
   </property>
   <widget class="QWidget" name="centralwidget">
+   <property name="enabled">
+    <bool>true</bool>
+   </property>
+   <property name="mouseTracking">
+    <bool>true</bool>
+   </property>
    <layout class="QGridLayout" name="gridLayout">
     <item row="1" column="3">
      <widget class="QGroupBox" name="AttributeBox">
+      <property name="enabled">
+       <bool>false</bool>
+      </property>
       <property name="font">
        <font>
         <weight>50</weight>
@@ -61,6 +73,12 @@
              </item>
              <item row="0" column="1">
               <widget class="QDoubleSpinBox" name="NearCp">
+               <property name="enabled">
+                <bool>false</bool>
+               </property>
+               <property name="readOnly">
+                <bool>false</bool>
+               </property>
                <property name="keyboardTracking">
                 <bool>false</bool>
                </property>
@@ -71,6 +89,9 @@
              </item>
              <item row="0" column="3">
               <widget class="QDoubleSpinBox" name="FarCp">
+               <property name="enabled">
+                <bool>false</bool>
+               </property>
                <property name="keyboardTracking">
                 <bool>false</bool>
                </property>
@@ -97,6 +118,9 @@
              </item>
              <item row="0" column="1">
               <widget class="QDoubleSpinBox" name="CameraFOVInput">
+               <property name="enabled">
+                <bool>false</bool>
+               </property>
                <property name="keyboardTracking">
                 <bool>false</bool>
                </property>

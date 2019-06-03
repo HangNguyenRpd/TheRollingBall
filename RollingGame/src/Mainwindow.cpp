@@ -8,6 +8,7 @@ MainWindow::MainWindow(QWidget *parent) :
     m_ui->setupUi(this);
     m_scene = new GameScene(this);
     m_ui->GameSceneLayout->addWidget(m_scene);
+    m_scene->setFocus();
 
     //connect all slots and signals
     connect(m_ui->CameraFOVInput, SIGNAL(valueChanged(double)), m_scene, SLOT(setFOV(double)));

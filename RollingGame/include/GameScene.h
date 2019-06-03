@@ -1,13 +1,18 @@
 #ifndef GAMESCENE_H
 #define GAMESCENE_H
 
-#include <ngl/Vec3.h>
+
 #include <ngl/Mat4.h>
-#include <ngl/Transformation.h>
+#include <ngl/Vec3.h>
+#include <ngl/Text.h>
 #include <QOpenGLWidget>
+#include <memory>
 #include <ngl/Obj.h>
-#include <ngl/ShaderLib.h>
-#include <QEvent>
+#include <QMouseEvent>
+#include <QKeyEvent>
+#include <QTime>
+#include "Path.h"
+
 
 struct WinParams
 {
@@ -25,7 +30,7 @@ struct Camera
     float horizontalAngle = 0.0f;
     float verticalAngle = 0.0f;
     ngl::Vec3 direction = ngl::Vec3(0.0f, 0.0f, -1.0f);
-    float distance = 10.0f;
+    float distance = 20.0f;
     ngl::Vec3 right = ngl::Vec3(-1.0f, 0.0f, 0.0f);
 };
 
@@ -52,6 +57,7 @@ class GameScene : public QOpenGLWidget //NGL openGL drawing context
         void mousePressEvent(QMouseEvent *_event) override;
         void mouseReleaseEvent(QMouseEvent *_event) override;
         void wheelEvent( QWheelEvent* _event ) override;
+        void keyPressEvent(QKeyEvent *_event) override;
 
         void timerEvent(QTimerEvent *event) override;
 
@@ -71,12 +77,12 @@ class GameScene : public QOpenGLWidget //NGL openGL drawing context
         ngl::Vec3 eye, look, up;
         ngl::Mat4 m_view;
         ngl::Mat4 m_projection;
-        ngl::Mat4 m_model;
+        ngl::Transformation m_Cube;
         ngl::Mat4 MVP;
-        ModelTransform radio;
-        ngl::Transformation m_transform;
+        ngl::Transformation m_Ball;
         float m_FOV = 45.0f, m_NearCp = 0.01f, m_FarCp = 300.0f;
         ngl::ShaderLib* shader;
+        Path *path;
 
         //from light view
         ngl::Mat4 m_lightCameraView;
@@ -87,8 +93,21 @@ class GameScene : public QOpenGLWidget //NGL openGL drawing context
         GLuint m_textureID;
         GLuint m_fboID;
 
+        //text
+        std::unique_ptr<ngl::Text> m_text;
+
         //timer
-        int timerId;
+        QTime m_time;
+        QTime m_updateBlockTime;
+        int block_index=0;
+        int m_fpsTimer;
+        bool start_Game = false;
+        bool start_Loop = false;
+        bool turn_Right = false;
+        float movingSpeed = 0.04f;
+        float backSpeed =0.0f;
+        int inside_Block = 0;
+        int m_score = 0;
 
 };
 

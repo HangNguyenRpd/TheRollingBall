@@ -247,7 +247,7 @@ Makefile: RollingGame.pro .qmake.cache C:\Qt\5.12.0\msvc2017_64\mkspecs\win32-cl
 		C:\Qt\5.12.0\msvc2017_64\mkspecs\features\resolve_config.prf \
 		C:\Qt\5.12.0\msvc2017_64\mkspecs\features\exclusive_builds_post.prf \
 		C:\Qt\5.12.0\msvc2017_64\mkspecs\features\default_post.prf \
-		C:\Qt\5.12.0\msvc2017_64\mkspecs\features\win32\windows.prf \
+		C:\Qt\5.12.0\msvc2017_64\mkspecs\features\win32\console.prf \
 		C:\Qt\5.12.0\msvc2017_64\mkspecs\features\win32\separate_debug_info.prf \
 		C:\Qt\5.12.0\msvc2017_64\mkspecs\features\resources.prf \
 		C:\Qt\5.12.0\msvc2017_64\mkspecs\features\qtquickcompiler.prf \
@@ -267,8 +267,7 @@ Makefile: RollingGame.pro .qmake.cache C:\Qt\5.12.0\msvc2017_64\mkspecs\win32-cl
 		C:\Qt\5.12.0\msvc2017_64\lib\Qt5OpenGL.prl \
 		C:\Qt\5.12.0\msvc2017_64\lib\Qt5Widgets.prl \
 		C:\Qt\5.12.0\msvc2017_64\lib\Qt5Gui.prl \
-		C:\Qt\5.12.0\msvc2017_64\lib\Qt5Core.prl \
-		C:\Qt\5.12.0\msvc2017_64\lib\qtmain.prl
+		C:\Qt\5.12.0\msvc2017_64\lib\Qt5Core.prl
 	$(QMAKE) -o Makefile RollingGame.pro -spec win32-clang-msvc "CONFIG+=qml_debug" "CONFIG+=qtquickcompiler" "CONFIG+=force_debug_info" "CONFIG+=separate_debug_info"
 C:\Qt\5.12.0\msvc2017_64\mkspecs\features\spec_pre.prf:
 C:\Qt\5.12.0\msvc2017_64\mkspecs\common\angle.conf:
@@ -442,7 +441,7 @@ C:\NGL\UseNGL.pri:
 C:\Qt\5.12.0\msvc2017_64\mkspecs\features\resolve_config.prf:
 C:\Qt\5.12.0\msvc2017_64\mkspecs\features\exclusive_builds_post.prf:
 C:\Qt\5.12.0\msvc2017_64\mkspecs\features\default_post.prf:
-C:\Qt\5.12.0\msvc2017_64\mkspecs\features\win32\windows.prf:
+C:\Qt\5.12.0\msvc2017_64\mkspecs\features\win32\console.prf:
 C:\Qt\5.12.0\msvc2017_64\mkspecs\features\win32\separate_debug_info.prf:
 C:\Qt\5.12.0\msvc2017_64\mkspecs\features\resources.prf:
 C:\Qt\5.12.0\msvc2017_64\mkspecs\features\qtquickcompiler.prf:
@@ -463,7 +462,6 @@ C:\Qt\5.12.0\msvc2017_64\lib\Qt5OpenGL.prl:
 C:\Qt\5.12.0\msvc2017_64\lib\Qt5Widgets.prl:
 C:\Qt\5.12.0\msvc2017_64\lib\Qt5Gui.prl:
 C:\Qt\5.12.0\msvc2017_64\lib\Qt5Core.prl:
-C:\Qt\5.12.0\msvc2017_64\lib\qtmain.prl:
 qmake: FORCE
 	@$(QMAKE) -o Makefile RollingGame.pro -spec win32-clang-msvc "CONFIG+=qml_debug" "CONFIG+=qtquickcompiler" "CONFIG+=force_debug_info" "CONFIG+=separate_debug_info"
 

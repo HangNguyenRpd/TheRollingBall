@@ -53,13 +53,17 @@ public:
     {
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName(QString::fromUtf8("MainWindow"));
+        MainWindow->setEnabled(true);
         MainWindow->resize(1098, 681);
         centralwidget = new QWidget(MainWindow);
         centralwidget->setObjectName(QString::fromUtf8("centralwidget"));
+        centralwidget->setEnabled(true);
+        centralwidget->setMouseTracking(true);
         gridLayout = new QGridLayout(centralwidget);
         gridLayout->setObjectName(QString::fromUtf8("gridLayout"));
         AttributeBox = new QGroupBox(centralwidget);
         AttributeBox->setObjectName(QString::fromUtf8("AttributeBox"));
+        AttributeBox->setEnabled(false);
         QFont font;
         font.setBold(false);
         font.setWeight(50);
@@ -88,6 +92,8 @@ public:
 
         NearCp = new QDoubleSpinBox(groupBox_8);
         NearCp->setObjectName(QString::fromUtf8("NearCp"));
+        NearCp->setEnabled(false);
+        NearCp->setReadOnly(false);
         NearCp->setKeyboardTracking(false);
         NearCp->setValue(0.010000000000000);
 
@@ -95,6 +101,7 @@ public:
 
         FarCp = new QDoubleSpinBox(groupBox_8);
         FarCp->setObjectName(QString::fromUtf8("FarCp"));
+        FarCp->setEnabled(false);
         FarCp->setKeyboardTracking(false);
         FarCp->setMaximum(10000.000000000000000);
         FarCp->setValue(300.000000000000000);
@@ -115,6 +122,7 @@ public:
 
         CameraFOVInput = new QDoubleSpinBox(widget);
         CameraFOVInput->setObjectName(QString::fromUtf8("CameraFOVInput"));
+        CameraFOVInput->setEnabled(false);
         CameraFOVInput->setKeyboardTracking(false);
         CameraFOVInput->setMinimum(1.000000000000000);
         CameraFOVInput->setValue(45.000000000000000);

@@ -3,18 +3,22 @@
 #include "GameScene.h"
 #include <iostream>
 #include <ngl/NGLInit.h>
-#include <ngl/VAOPrimitives.h>
 #include <ngl/Image.h>
 #include <ngl/Texture.h>
-#include <iostream>
+#include <math.h>
+
 
 GameScene::GameScene(QWidget *parent) : QOpenGLWidget(parent) //constructor
 {
     setFocus(); //set focus to this window
     this->resize(parent->size()); //resize the widget to the window
+    path = new Path();
 }
 
-GameScene::~GameScene()=default;
+GameScene::~GameScene()
+{
+    delete path;
+}
 
 void GameScene::resizeGL(int width, int height)
 {
@@ -64,11 +68,12 @@ bool GameScene::createFramebufferObject()
 void GameScene::initializeGL()
 {
     ngl::NGLInit::instance(); //initialize NGL
-    glClearColor(0.1f, 0.1f, 0.1f, 0.1f);
+    glClearColor(0.8f, 0.8f, 0.8f, 1.0f);
     glEnable(GL_DEPTH_TEST); //depth test and multisampling for drawing
     glEnable(GL_MULTISAMPLE);
 
-    ngl::VAOPrimitives::instance()->createLineGrid("grid",20,20,20);
+    ngl::VAOPrimitives::instance()->createLineGrid("grid",30,30,30);
+    ngl::VAOPrimitives::instance()->createSphere("sphere",0.2,10);
 
     //load Gamey shaders
     shader = ngl::ShaderLib::instance();
@@ -83,8 +88,25 @@ void GameScene::initializeGL()
     //default camera settings
     look = ngl::Vec3(0.0f, 0.0f, 0.0f);
     up = ngl::Vec3(0.0f, 1.0f, 0.0f);
+    //eye = ngl::Vec3(-20.0f, 20.0f, -20.0f);
 
 
+    //start timer
+    m_time.start();
+    m_updateBlockTime.start();
+    m_fpsTimer =startTimer(0);
+    m_Cube.setPosition(0.5f,0.0f,0.5f);
+    m_Cube.setScale(1.0f,2.0f,1.0f);
+    m_Ball.setPosition(0.0f,1.2f,0.0f);
+    m_text.reset( new ngl::Text(QFont("Arial",14)));
+    //m_text->setTransform(20,20);
+    m_text->setScreenSize(m_width,m_height);
+
+
+    path->calBlocks();
+
+
+    //update viewport
     glViewport(0,0,m_width,m_height);
 }
 
@@ -105,6 +127,7 @@ void GameScene::paintGL()
                                  cos(camera.verticalAngle) * cos(camera.horizontalAngle));
     up.cross(camera.right, camera.direction);
     eye = look + camera.direction * camera.distance;
+    //eye = ngl::Vec3(-11.0f, 11.0f, -11.0f);
     m_view=ngl::lookAt(eye,look,up);
     m_projection=ngl::perspective(m_FOV, //fov
                                float(m_width/m_height), //width/height
@@ -118,12 +141,30 @@ void GameScene::paintGL()
     shader->setUniform("Colour", ngl::Vec4(0.5f, 0.5f, 0.5f, 1.0f));
     obj->draw("grid");
 
-    //draw a cube
-    m_model.translate(1.0f,1.0f,1.0f);
-    MVP = m_projection * m_view * m_model;
+
+
+    //a rolling sphere
     shader->use("Toony");
-    shader->setUniform("MVP",MVP);
-    obj->draw("cube");
+    shader->setUniform("P",m_projection);
+    shader->setUniform("M",m_Ball.getMatrix());
+    shader->setUniform("V", m_view);
+    shader->setUniform("ColourMap", ngl::Vec4(0.3f,0.2f,0.1f,1.0f));
+    obj->draw("sphere");
+
+    //draw a cube
+
+    //draw path
+    shader->use("Toony");
+    shader->setUniform("P",m_projection);
+    shader->setUniform("V", m_view);
+    shader->setUniform("ColourMap", ngl::Vec4(0.1f,0.4f,0.6f,1.0f));
+    path->drawPath();
+
+    //draw text score
+    QString text=QString("Score: %1 ").arg(m_score);
+    m_text->setColour(1,1,1);
+
+    m_text->renderText(10,20,text);
 
 
 

@@ -15,6 +15,7 @@ int main(int argc, char *argv[])
     std::cout << "Profile is " << format.majorVersion() << " " << format.minorVersion() << "\n";
     format.setDepthBufferSize(24);
     QSurfaceFormat::setDefaultFormat(format);
+    format.setProfile(QSurfaceFormat::CoreProfile);
 
     MainWindow window;
     window.show();
