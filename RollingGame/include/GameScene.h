@@ -108,6 +108,7 @@ class GameScene : public QOpenGLWidget //NGL openGL drawing context
         float backSpeed =0.0f;
         int inside_Block = 0;
         int m_score = 0;
+        bool end_Game = true;
 
 };
 

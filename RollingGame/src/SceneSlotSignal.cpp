@@ -35,7 +35,7 @@ void GameScene::timerEvent(QTimerEvent *_event )
         {
             block_index=path->updateBlock(block_index);
             m_updateBlockTime.restart();
-            qDebug("update block");
+            qDebug()<<"Score: "<<m_score;
 
         }
 
@@ -60,6 +60,7 @@ void GameScene::keyPressEvent( QKeyEvent *_event)
         start_Game = true;
         m_updateBlockTime.start();
         m_time.start();
+        qDebug()<<"START GAME";
     }
     update();
 

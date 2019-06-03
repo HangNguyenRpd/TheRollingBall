@@ -174,7 +174,6 @@ int Path::ballDetect(float ball_X, float ball_Z, int old_inside_Block, int &scor
 
     if (inside_Block!=old_inside_Block)
     {
-        qDebug()<<"in block " <<inside_Block;
         score+=1;
     }
 

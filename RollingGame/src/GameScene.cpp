@@ -6,6 +6,7 @@
 #include <ngl/Image.h>
 #include <ngl/Texture.h>
 #include <math.h>
+#include <QFont>
 
 
 GameScene::GameScene(QWidget *parent) : QOpenGLWidget(parent) //constructor
@@ -139,7 +140,7 @@ void GameScene::paintGL()
     shader->use(ngl::nglColourShader);
     shader->setUniform("MVP",MVP);
     shader->setUniform("Colour", ngl::Vec4(0.5f, 0.5f, 0.5f, 1.0f));
-    obj->draw("grid");
+    //obj->draw("grid");
 
 
 
@@ -151,7 +152,6 @@ void GameScene::paintGL()
     shader->setUniform("ColourMap", ngl::Vec4(0.3f,0.2f,0.1f,1.0f));
     obj->draw("sphere");
 
-    //draw a cube
 
     //draw path
     shader->use("Toony");
@@ -161,10 +161,27 @@ void GameScene::paintGL()
     path->drawPath();
 
     //draw text score
-    QString text=QString("Score: %1 ").arg(m_score);
-    m_text->setColour(1,1,1);
-
+    QString text="Score: ";
+    m_text->setColour(0,0,0);
     m_text->renderText(10,20,text);
+
+    //when ball falls out of the map -> lose
+    if (inside_Block==-1)
+    {
+        text="LOSE";
+        m_text->renderText(10,20,text);
+        m_Ball.addPosition(0,-0.2f,0);
+        start_Game=false;
+        if (end_Game)
+        {
+            qDebug()<<"END GAME";
+            qDebug()<<"TOTAL SCORE:  "<<m_score;
+            end_Game=false;
+        }
+
+
+    }
+
 
 
 
