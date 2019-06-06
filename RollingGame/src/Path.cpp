@@ -13,15 +13,6 @@ void Path::drawPath()
     ngl::VAOPrimitives* cube = ngl::VAOPrimitives::instance();
     ngl::ShaderLib* shader = ngl::ShaderLib::instance();
     int i=0;
-    /*
-    for (i=0; i<num_of_Blocks; ++i)
-    {
-        if ((block[i].endBlock_X < -12) && (block[i].endBlock_Z < -12)) //block goes out of screen
-        {
-            updateBlock(i);
-        }
-    } */
-
     for (i=0; i<num_of_Blocks; ++i )
     {
         if (block[i].turn_Right)
@@ -55,6 +46,8 @@ void Path::movePath(float backSpeed)
 
 void Path::placeBlock(int i)
 {
+    if (i<block.size())
+    {
     block[i].turn_Right = !block[i-1].turn_Right;
     if (!block[i].turn_Right)
     {
@@ -86,7 +79,9 @@ void Path::placeBlock(int i)
         //new block centre
         block[i].positionX = block[i-1].positionX + block[i-1].length*0.5f - 0.5f;
         block[i].positionZ = block[i-1].positionZ + block[i].length*0.5f + 0.5f;
-    }
+    }}
+    else
+        qDebug()<<"out of range" << block.size();
 
 }
 
@@ -94,6 +89,8 @@ void Path::calBlocks()
 {
      //create extra memory space, just in case
     int i=0;
+    block.clear();
+    block.resize(num_of_Blocks+2);
 
     //set the first block[0]
     block[0].length = 4;
@@ -175,6 +172,7 @@ int Path::ballDetect(float ball_X, float ball_Z, int old_inside_Block, int &scor
     if (inside_Block!=old_inside_Block)
     {
         score+=1;
+        qDebug()<<"Score: "<<score;
     }
 
     return inside_Block;

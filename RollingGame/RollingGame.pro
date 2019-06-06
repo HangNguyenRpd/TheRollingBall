@@ -12,13 +12,13 @@ SOURCES +=  src/main.cpp \
             src/GameScene.cpp \
             src/SceneSlotSignal.cpp \
             src/SceneMouseControl.cpp \
-    src/Path.cpp
+            src/Path.cpp
 
 FORMS +=    ui/Mainwindow.ui \
 
 HEADERS +=  include/Mainwindow.h \
             include/GameScene.h \
-    include/Path.h
+            include/Path.h
 
 OTHER_FILES+= README.md \
               shaders/ToonFrag.glsl \

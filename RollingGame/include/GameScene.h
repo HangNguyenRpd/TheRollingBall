@@ -14,6 +14,7 @@
 #include "Path.h"
 
 
+
 struct WinParams
 {
   bool rotate = false;
@@ -62,7 +63,7 @@ class GameScene : public QOpenGLWidget //NGL openGL drawing context
         void timerEvent(QTimerEvent *event) override;
 
     public slots:
-        void setFOV(double m_FOV);
+        void setSpeed(double m_FOV);
         void setNearCp(double m_NearCp);
         void setFarCp(double m_FarCp);
 
@@ -77,7 +78,6 @@ class GameScene : public QOpenGLWidget //NGL openGL drawing context
         ngl::Vec3 eye, look, up;
         ngl::Mat4 m_view;
         ngl::Mat4 m_projection;
-        ngl::Transformation m_Cube;
         ngl::Mat4 MVP;
         ngl::Transformation m_Ball;
         float m_FOV = 45.0f, m_NearCp = 0.01f, m_FarCp = 300.0f;
@@ -105,7 +105,6 @@ class GameScene : public QOpenGLWidget //NGL openGL drawing context
         bool start_Loop = false;
         bool turn_Right = false;
         float movingSpeed = 0.04f;
-        float backSpeed =0.0f;
         int inside_Block = 0;
         int m_score = 0;
         bool end_Game = true;

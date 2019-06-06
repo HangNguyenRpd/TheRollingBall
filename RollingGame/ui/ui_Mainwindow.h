@@ -42,7 +42,7 @@ public:
     QWidget *widget;
     QGridLayout *gridLayout_9;
     QLabel *label;
-    QDoubleSpinBox *CameraFOVInput;
+    QDoubleSpinBox *MovingSpeed;
     QSpacerItem *verticalSpacer;
     QVBoxLayout *GameSceneLayout;
     QSpacerItem *horizontalSpacer;
@@ -55,6 +55,7 @@ public:
             MainWindow->setObjectName(QString::fromUtf8("MainWindow"));
         MainWindow->setEnabled(true);
         MainWindow->resize(1098, 681);
+        MainWindow->setFocusPolicy(Qt::StrongFocus);
         centralwidget = new QWidget(MainWindow);
         centralwidget->setObjectName(QString::fromUtf8("centralwidget"));
         centralwidget->setEnabled(true);
@@ -63,7 +64,7 @@ public:
         gridLayout->setObjectName(QString::fromUtf8("gridLayout"));
         AttributeBox = new QGroupBox(centralwidget);
         AttributeBox->setObjectName(QString::fromUtf8("AttributeBox"));
-        AttributeBox->setEnabled(false);
+        AttributeBox->setEnabled(true);
         QFont font;
         font.setBold(false);
         font.setWeight(50);
@@ -74,6 +75,7 @@ public:
         gridLayout_2->setObjectName(QString::fromUtf8("gridLayout_2"));
         groupBox = new QGroupBox(AttributeBox);
         groupBox->setObjectName(QString::fromUtf8("groupBox"));
+        groupBox->setEnabled(true);
         gridLayout_3 = new QGridLayout(groupBox);
         gridLayout_3->setObjectName(QString::fromUtf8("gridLayout_3"));
         groupBox_8 = new QGroupBox(groupBox);
@@ -113,6 +115,7 @@ public:
 
         widget = new QWidget(groupBox);
         widget->setObjectName(QString::fromUtf8("widget"));
+        widget->setEnabled(true);
         gridLayout_9 = new QGridLayout(widget);
         gridLayout_9->setObjectName(QString::fromUtf8("gridLayout_9"));
         label = new QLabel(widget);
@@ -120,14 +123,16 @@ public:
 
         gridLayout_9->addWidget(label, 0, 0, 1, 1);
 
-        CameraFOVInput = new QDoubleSpinBox(widget);
-        CameraFOVInput->setObjectName(QString::fromUtf8("CameraFOVInput"));
-        CameraFOVInput->setEnabled(false);
-        CameraFOVInput->setKeyboardTracking(false);
-        CameraFOVInput->setMinimum(1.000000000000000);
-        CameraFOVInput->setValue(45.000000000000000);
+        MovingSpeed = new QDoubleSpinBox(widget);
+        MovingSpeed->setObjectName(QString::fromUtf8("MovingSpeed"));
+        MovingSpeed->setEnabled(true);
+        MovingSpeed->setKeyboardTracking(false);
+        MovingSpeed->setMinimum(0.010000000000000);
+        MovingSpeed->setMaximum(1.000000000000000);
+        MovingSpeed->setSingleStep(0.010000000000000);
+        MovingSpeed->setValue(0.040000000000000);
 
-        gridLayout_9->addWidget(CameraFOVInput, 0, 1, 1, 1);
+        gridLayout_9->addWidget(MovingSpeed, 0, 1, 1, 1);
 
 
         gridLayout_3->addWidget(widget, 0, 0, 1, 1);
@@ -168,13 +173,13 @@ public:
 
     void retranslateUi(QMainWindow *MainWindow)
     {
-        MainWindow->setWindowTitle(QApplication::translate("MainWindow", "Radio", nullptr));
+        MainWindow->setWindowTitle(QApplication::translate("MainWindow", "Rolling Game", nullptr));
         AttributeBox->setTitle(QApplication::translate("MainWindow", "Attribute Editor", nullptr));
         groupBox->setTitle(QApplication::translate("MainWindow", "Camera", nullptr));
         groupBox_8->setTitle(QApplication::translate("MainWindow", "Clipping Plane", nullptr));
         label_2->setText(QApplication::translate("MainWindow", "Near", nullptr));
         label_3->setText(QApplication::translate("MainWindow", "Far", nullptr));
-        label->setText(QApplication::translate("MainWindow", "FOV", nullptr));
+        label->setText(QApplication::translate("MainWindow", "Speed", nullptr));
     } // retranslateUi
 
 };

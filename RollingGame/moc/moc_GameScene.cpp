@@ -22,7 +22,7 @@ QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_GameScene_t {
     QByteArrayData data[8];
-    char stringdata0[60];
+    char stringdata0[62];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -32,16 +32,16 @@ struct qt_meta_stringdata_GameScene_t {
 static const qt_meta_stringdata_GameScene_t qt_meta_stringdata_GameScene = {
     {
 QT_MOC_LITERAL(0, 0, 9), // "GameScene"
-QT_MOC_LITERAL(1, 10, 6), // "setFOV"
-QT_MOC_LITERAL(2, 17, 0), // ""
-QT_MOC_LITERAL(3, 18, 5), // "m_FOV"
-QT_MOC_LITERAL(4, 24, 9), // "setNearCp"
-QT_MOC_LITERAL(5, 34, 8), // "m_NearCp"
-QT_MOC_LITERAL(6, 43, 8), // "setFarCp"
-QT_MOC_LITERAL(7, 52, 7) // "m_FarCp"
+QT_MOC_LITERAL(1, 10, 8), // "setSpeed"
+QT_MOC_LITERAL(2, 19, 0), // ""
+QT_MOC_LITERAL(3, 20, 5), // "m_FOV"
+QT_MOC_LITERAL(4, 26, 9), // "setNearCp"
+QT_MOC_LITERAL(5, 36, 8), // "m_NearCp"
+QT_MOC_LITERAL(6, 45, 8), // "setFarCp"
+QT_MOC_LITERAL(7, 54, 7) // "m_FarCp"
 
     },
-    "GameScene\0setFOV\0\0m_FOV\0setNearCp\0"
+    "GameScene\0setSpeed\0\0m_FOV\0setNearCp\0"
     "m_NearCp\0setFarCp\0m_FarCp"
 };
 #undef QT_MOC_LITERAL
@@ -78,7 +78,7 @@ void GameScene::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, v
         GameScene *_t = static_cast<GameScene *>(_o);
         Q_UNUSED(_t)
         switch (_id) {
-        case 0: _t->setFOV((*reinterpret_cast< double(*)>(_a[1]))); break;
+        case 0: _t->setSpeed((*reinterpret_cast< double(*)>(_a[1]))); break;
         case 1: _t->setNearCp((*reinterpret_cast< double(*)>(_a[1]))); break;
         case 2: _t->setFarCp((*reinterpret_cast< double(*)>(_a[1]))); break;
         default: ;

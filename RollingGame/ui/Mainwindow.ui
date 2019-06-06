@@ -13,8 +13,11 @@
     <height>681</height>
    </rect>
   </property>
+  <property name="focusPolicy">
+   <enum>Qt::StrongFocus</enum>
+  </property>
   <property name="windowTitle">
-   <string>Radio</string>
+   <string>Rolling Game</string>
   </property>
   <widget class="QWidget" name="centralwidget">
    <property name="enabled">
@@ -27,7 +30,7 @@
     <item row="1" column="3">
      <widget class="QGroupBox" name="AttributeBox">
       <property name="enabled">
-       <bool>false</bool>
+       <bool>true</bool>
       </property>
       <property name="font">
        <font>
@@ -47,6 +50,9 @@
       <layout class="QGridLayout" name="gridLayout_2">
        <item row="0" column="1">
         <widget class="QGroupBox" name="groupBox">
+         <property name="enabled">
+          <bool>true</bool>
+         </property>
          <property name="title">
           <string>Camera</string>
          </property>
@@ -108,27 +114,36 @@
           </item>
           <item row="0" column="0">
            <widget class="QWidget" name="widget" native="true">
+            <property name="enabled">
+             <bool>true</bool>
+            </property>
             <layout class="QGridLayout" name="gridLayout_9">
              <item row="0" column="0">
               <widget class="QLabel" name="label">
                <property name="text">
-                <string>FOV</string>
+                <string>Speed</string>
                </property>
               </widget>
              </item>
              <item row="0" column="1">
-              <widget class="QDoubleSpinBox" name="CameraFOVInput">
+              <widget class="QDoubleSpinBox" name="MovingSpeed">
                <property name="enabled">
-                <bool>false</bool>
+                <bool>true</bool>
                </property>
                <property name="keyboardTracking">
                 <bool>false</bool>
                </property>
                <property name="minimum">
+                <double>0.010000000000000</double>
+               </property>
+               <property name="maximum">
                 <double>1.000000000000000</double>
                </property>
+               <property name="singleStep">
+                <double>0.010000000000000</double>
+               </property>
                <property name="value">
-                <double>45.000000000000000</double>
+                <double>0.040000000000000</double>
                </property>
               </widget>
              </item>

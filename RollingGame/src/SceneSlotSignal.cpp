@@ -35,7 +35,6 @@ void GameScene::timerEvent(QTimerEvent *_event )
         {
             block_index=path->updateBlock(block_index);
             m_updateBlockTime.restart();
-            qDebug()<<"Score: "<<m_score;
 
         }
 
@@ -61,6 +60,23 @@ void GameScene::keyPressEvent( QKeyEvent *_event)
         m_updateBlockTime.start();
         m_time.start();
         qDebug()<<"START GAME";
+    }
+
+    if (_event->key() == Qt::Key_R)
+    {
+        start_Game = false;
+        turn_Right = false;
+        start_Loop = false;
+        m_score = 0;
+        end_Game = true;
+        block_index = 0;
+        m_Ball.setPosition(0.0f,1.2f,0.0f);
+        inside_Block=0;
+
+
+        path->calBlocks();
+        qDebug()<<"RESTART";
+
     }
     update();
 

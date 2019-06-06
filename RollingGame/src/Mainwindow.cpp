@@ -11,7 +11,7 @@ MainWindow::MainWindow(QWidget *parent) :
     m_scene->setFocus();
 
     //connect all slots and signals
-    connect(m_ui->CameraFOVInput, SIGNAL(valueChanged(double)), m_scene, SLOT(setFOV(double)));
+    connect(m_ui->MovingSpeed, SIGNAL(valueChanged(double)), m_scene, SLOT(setSpeed(double)));
     connect(m_ui->NearCp, SIGNAL(valueChanged(double)), m_scene, SLOT(setNearCp(double)));
     connect(m_ui->FarCp, SIGNAL(valueChanged(double)), m_scene, SLOT(setFarCp(double)));
 }

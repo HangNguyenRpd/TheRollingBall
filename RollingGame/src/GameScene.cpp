@@ -7,6 +7,7 @@
 #include <ngl/Texture.h>
 #include <math.h>
 #include <QFont>
+#include <QGuiApplication>
 
 
 GameScene::GameScene(QWidget *parent) : QOpenGLWidget(parent) //constructor
@@ -96,19 +97,17 @@ void GameScene::initializeGL()
     m_time.start();
     m_updateBlockTime.start();
     m_fpsTimer =startTimer(0);
-    m_Cube.setPosition(0.5f,0.0f,0.5f);
-    m_Cube.setScale(1.0f,2.0f,1.0f);
     m_Ball.setPosition(0.0f,1.2f,0.0f);
     m_text.reset( new ngl::Text(QFont("Arial",14)));
     //m_text->setTransform(20,20);
-    m_text->setScreenSize(m_width,m_height);
+    m_text->setScreenSize(width(),height());
 
 
     path->calBlocks();
 
 
     //update viewport
-    glViewport(0,0,m_width,m_height);
+    glViewport(0,0,width(),height());
 }
 
 
@@ -117,6 +116,7 @@ void GameScene::paintGL()
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     glPolygonMode(GL_FRONT_AND_BACK,GL_FILL);
     glEnable(GL_CULL_FACE);
+
 
     //vao primitive variable
     auto obj = ngl::VAOPrimitives::instance();

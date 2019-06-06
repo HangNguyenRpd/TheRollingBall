@@ -52,6 +52,7 @@ void GameScene::mousePressEvent( QMouseEvent* _event )
     m_win.origYPos  = _event->y();
     m_win.translate = true;
   }
+  setFocus();
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -83,23 +84,27 @@ void GameScene::wheelEvent( QWheelEvent* _event )
   {
     camera.distance -= 0.4f;
   }
+  setFocus();
   update();
 }
 
-void GameScene::setFOV(double ui_FOV)
+void GameScene::setSpeed(double ui_Speed)
 {
-    m_FOV = ui_FOV;
+    movingSpeed = ui_Speed;
+    setFocus();
     update();
 }
 
 void GameScene::setNearCp(double ui_NearCp)
 {
     m_NearCp = ui_NearCp;
+    setFocus();
     update();
 }
 
 void GameScene::setFarCp(double ui_FarCp)
 {
     m_FarCp = ui_FarCp;
+    setFocus();
     update();
 }
