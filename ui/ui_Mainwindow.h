@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'Mainwindow.ui'
 **
-** Created by: Qt User Interface Compiler version 5.12.0
+** Created by: Qt User Interface Compiler version 5.15.0
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
@@ -173,13 +173,13 @@ public:
 
     void retranslateUi(QMainWindow *MainWindow)
     {
-        MainWindow->setWindowTitle(QApplication::translate("MainWindow", "Rolling Game", nullptr));
-        AttributeBox->setTitle(QApplication::translate("MainWindow", "Attribute Editor", nullptr));
-        groupBox->setTitle(QApplication::translate("MainWindow", "Camera", nullptr));
-        groupBox_8->setTitle(QApplication::translate("MainWindow", "Clipping Plane", nullptr));
-        label_2->setText(QApplication::translate("MainWindow", "Near", nullptr));
-        label_3->setText(QApplication::translate("MainWindow", "Far", nullptr));
-        label->setText(QApplication::translate("MainWindow", "Speed", nullptr));
+        MainWindow->setWindowTitle(QCoreApplication::translate("MainWindow", "Rolling Game", nullptr));
+        AttributeBox->setTitle(QCoreApplication::translate("MainWindow", "Attribute Editor", nullptr));
+        groupBox->setTitle(QCoreApplication::translate("MainWindow", "Camera", nullptr));
+        groupBox_8->setTitle(QCoreApplication::translate("MainWindow", "Clipping Plane", nullptr));
+        label_2->setText(QCoreApplication::translate("MainWindow", "Near", nullptr));
+        label_3->setText(QCoreApplication::translate("MainWindow", "Far", nullptr));
+        label->setText(QCoreApplication::translate("MainWindow", "Speed", nullptr));
     } // retranslateUi
 
 };
